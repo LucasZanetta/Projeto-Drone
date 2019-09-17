@@ -1,0 +1,24 @@
+CREATE TABLE cadastro_drone.aeronave (
+	idaeronave serial NOT NULL,
+	cod_aeronave varchar(12) NOT NULL,
+	tipo_uso varchar(14) NOT NULL,
+	fabricante varchar(50) NOT NULL,
+	modelo varchar(50) NOT NULL,
+	num_serie varchar(30) NOT NULL,
+	peso_max numeric(22) NOT NULL,
+	data_validade date NOT NULL,
+	idoperador int4 NOT NULL,
+	CONSTRAINT aeronave_pkey PRIMARY KEY (idaeronave),
+	CONSTRAINT aeronave_idoperador_fkey FOREIGN KEY (idoperador) REFERENCES cadastro_drone.operador(idoperador)
+);
+
+
+
+CREATE TABLE cadastro_drone.operador (
+	idoperador serial NOT NULL,
+	nome varchar(142) NOT NULL,
+	cpf_cnpj varchar(18) NOT NULL,
+	cidade_estado varchar(100) NOT NULL,
+	ramo_atividade varchar(142) NOT NULL,
+	CONSTRAINT operador_pkey PRIMARY KEY (idoperador)
+);
